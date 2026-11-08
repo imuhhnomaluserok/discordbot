@@ -14,7 +14,9 @@ SECRET_KEY = os.getenv("CLOUDFLARE_SECRET_KEY", "my_super_secret_key")
 # ---------------------------------------------------------------------------
 # セルフボット（一般ユーザーアカウント）の初期化
 # ---------------------------------------------------------------------------
-intents = discord.intents.all()
+from discord import Intents 
+
+intents = Intents.all()
 client = discord.Client(intents=intents, bot=False)
 # ---------------------------------------------------------------------------
 # FastAPI (Cloudflareからの潜入命令を待つ窓口)
