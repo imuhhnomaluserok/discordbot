@@ -1,12 +1,11 @@
 import os
 import asyncio
-import logging  # ★標準のロギングモジュールを追加
-from fastapi import FastAPI, HTTPException, Header  # pyright: ignore[reportMissingImports]
-from pydantic import BaseModel  # pyright: ignore[reportMissingImports]
-import discord  # pyright: ignore[reportMissingImports]
-import discord.intents  # ★最新仕様のインポート階層
-from dotenv import load_dotenv  # type: ignore
-import uvicorn  # pyright: ignore[reportMissingImports]
+import logging
+from fastapi import FastAPI, HTTPException, Header # pyright: ignore[reportMissingImports]
+from pydantic import BaseModel # pyright: ignore[reportMissingImports]
+import discord # pyright: ignore[reportMissingImports]
+from dotenv import load_dotenv # type: ignore
+import uvicorn # pyright: ignore[reportMissingImports]
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -15,8 +14,8 @@ SECRET_KEY = os.getenv("CLOUDFLARE_SECRET_KEY", "my_super_secret_key")
 # ---------------------------------------------------------------------------
 # セルフボット（一般ユーザーアカウント）の初期化
 # ---------------------------------------------------------------------------
-# ★最新の discord.py-self (2.1.0) の仕様に合わせた完璧なインポート
-intents = discord.intents.Intents.all()
+# ★王道の大文字 Intents に戻します。Python 3.11ならこれが完璧に動作します！
+intents = discord.Intents.all()
 client = discord.Client(intents=intents, bot=False)
 
 # ---------------------------------------------------------------------------
